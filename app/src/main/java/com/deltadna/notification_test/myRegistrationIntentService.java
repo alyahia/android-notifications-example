@@ -35,7 +35,7 @@ public class myRegistrationIntentService extends IntentService{
     }
 
     private void sendRegistrationToken(String token){
-        //implement sending token to push notification server
+        //TODO implement sending token to push notification server
         Log.i(TAG, "GCM Registration Token: " + token);
     }
 }

@@ -20,4 +20,6 @@ public class MyGcmListenerService extends GcmListenerService{
             Log.d(TAG, key+": "+msg);
         }
     }
+
+    //TODO create an actual popup message instead of just a log message
 }

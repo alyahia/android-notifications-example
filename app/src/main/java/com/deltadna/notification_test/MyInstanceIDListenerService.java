@@ -1,15 +1,10 @@
 package com.deltadna.notification_test;
 
-import android.content.Context;
 import android.content.Intent;
 import android.media.session.MediaSession;
 import android.util.Log;
 
-import com.google.android.gms.iid.InstanceID;
 import com.google.android.gms.iid.InstanceIDListenerService;
-import com.google.android.gms.gcm.GoogleCloudMessaging;
-
-import java.io.IOException;
 
 
 /**
