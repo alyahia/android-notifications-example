@@ -51,6 +51,12 @@
             </intent-filter>
         </service>
 
+        <service
+            android:name="com.deltadna.notification_test.myRegistrationIntentService"
+            android:exported="false">
+        </service>
+
+
 
     </application>
 
