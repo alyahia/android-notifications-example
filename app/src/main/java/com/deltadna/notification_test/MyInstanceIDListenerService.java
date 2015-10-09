@@ -8,6 +8,8 @@ import com.google.android.gms.iid.InstanceIDListenerService;
 
 
 /**
+ * This service will keep track of the token refreshes, this means whenever a token is refreshed on the GCM side,
+ * the app will need to retrieve it and report it back to its backend server.
  * Created by steven on 29/09/15.
  */
 public class MyInstanceIDListenerService extends InstanceIDListenerService {

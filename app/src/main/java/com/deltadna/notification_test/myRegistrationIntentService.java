@@ -11,6 +11,8 @@ import java.io.IOException;
 
 /**
  * Created by steven on 02/10/15.
+ * This service gets the registration ID token and will be triggered whenever the token needs to be refreshed.
+ * @author Steven van Stiphout
  */
 public class myRegistrationIntentService extends IntentService{
     public static String TAG = "myRegistrationIntentService";
@@ -34,6 +36,10 @@ public class myRegistrationIntentService extends IntentService{
         }
     }
 
+    /**
+     * send the registration token to the backend that is responsible for sending push notifications
+     * @param token
+     */
     private void sendRegistrationToken(String token){
         //TODO implement sending token to push notification server
         Log.i(TAG, "GCM Registration Token: " + token);
