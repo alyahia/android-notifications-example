@@ -4,6 +4,7 @@ import android.app.IntentService;
 import android.content.Intent;
 import android.util.Log;
 
+import com.deltadna.android.sdk.DDNA;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
 import com.google.android.gms.iid.InstanceID;
 
@@ -41,7 +42,7 @@ public class myRegistrationIntentService extends IntentService{
      * @param token
      */
     private void sendRegistrationToken(String token){
-        //TODO implement sending token to push notification server
-        Log.i(TAG, "GCM Registration Token: " + token);
+        //Register the token with DeltaDNA
+        DDNA.inst().setAndroidRegistrationID(token);
     }
 }
