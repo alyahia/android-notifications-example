@@ -57,7 +57,7 @@
         </service>
 
         <service
-            android:name="com.deltadna.notification_test.myRegistrationIntentService"
+            android:name=".MyRegistrationIntentService"
             android:exported="false"></service>
 
 

@@ -1,7 +1,6 @@
 package com.deltadna.notification_test;
 
 import android.content.Intent;
-import android.media.session.MediaSession;
 import android.util.Log;
 
 import com.google.android.gms.iid.InstanceIDListenerService;
@@ -13,8 +12,7 @@ import com.google.android.gms.iid.InstanceIDListenerService;
  * Created by steven on 29/09/15.
  */
 public class MyInstanceIDListenerService extends InstanceIDListenerService {
-    public static MediaSession.Token tokenItem;
-    String TAG = "InstanceIdListenerService";
+    private static final String  TAG = "DDNA-InstanceIdLiServ";
 
     public MyInstanceIDListenerService() {
         //This service will keep track of token changes and makes sure the registrationIntentService will request a new token when it needs to be refreshed
@@ -25,7 +23,7 @@ public class MyInstanceIDListenerService extends InstanceIDListenerService {
 
     public void onTokenRefresh() {
         //Start the registrationIntentService since the token needs to be refreshed
-        Intent regIntent = new Intent(this, myRegistrationIntentService.class);
+        Intent regIntent = new Intent(this, MyRegistrationIntentService.class);
         startService(regIntent);
     }
 

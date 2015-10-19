@@ -19,26 +19,30 @@ import com.google.android.gms.gcm.GcmListenerService;
  * @author Steven van Stiphout
  */
 public class MyGcmListenerService extends GcmListenerService {
+    private static final String TAG = "MyGcmListenerService";
+
     /**
-     * This method handles the
+     * This method handles the incoming GCM message and initiates showing the notification.
      *
      * @param from The senderId of the application in GCM
      * @param data the data received
      */
     @Override
     public void onMessageReceived(String from, Bundle data) {
-        String TAG = "MyGcmListenerService";
         Log.i(TAG, "Push notification Received From: " + from);
         for (String key : data.keySet()) {
             String msg = data.getString(key);
             Log.d(TAG, key + ": " + msg);
         }
+        //take the value of the alert key and create a notification with that
         createNotification(data.getString("alert"));
     }
 
 
-    //TODO create an actual popup message instead of just a log message
-
+    /**
+     *
+     * @param msg the message that will be shown in the notification
+     */
     private void createNotification(String msg) {
         NotificationCompat.Builder mBuilder =
                 new NotificationCompat.Builder(this)

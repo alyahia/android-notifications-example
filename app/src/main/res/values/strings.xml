@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">notification_test</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="app_name">DDNA Notification Test</string>
+    <string name="hello_world">This is the GCM notification test app</string>
     <string name="action_settings">Settings</string>
 </resources>

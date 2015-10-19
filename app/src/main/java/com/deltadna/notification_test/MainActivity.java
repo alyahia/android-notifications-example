@@ -1,6 +1,7 @@
 package com.deltadna.notification_test;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,32 +13,50 @@ import com.deltadna.android.sdk.helpers.NotStartedException;
 
 
 public class MainActivity extends AppCompatActivity {
-    String TAG = "MainActivity";
+    private static final String TAG = "DDNA MainActivity";
+    public static final String PREFS_NAME = "PreferenceFile";
+    private SharedPreferences persistent_settings;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        persistent_settings = getSharedPreferences(PREFS_NAME, 0);
+
         //Start the registrationIntentService manually upon start in order to get the registrationID
-        Intent intent = new Intent(this, myRegistrationIntentService.class);
-        startService(intent);
+        this.startRegistrationIntent();
 
         // Initialise the deltaDNA SDK
         // NB This can also be done in your applications OnCreate method.
         DDNA.inst().init(this.getApplication());
 
         // Start deltaDNA SDK
-        String environmentKey 	= "22079697190426055695055037414340";
-        String collectHostname 	= "http://collect4792jmprb.deltadna.net/collect/api";
-        String engageHostname 	= "http://engage4792jmprb.deltadna.net";
+        String environmentKey = "22079697190426055695055037414340";
+        String collectHostname = "http://collect4792jmprb.deltadna.net/collect/api";
+        String engageHostname = "http://engage4792jmprb.deltadna.net";
 
         // SDK generates its own userID when null is passed
         DDNA.inst().startSDK(environmentKey, collectHostname, engageHostname, null);
+    }
+
+    private void startRegistrationIntent() {
+        if (persistent_settings.contains("token")) {
+            //Since we already have a token we will only need to request a new one once it expires.
+            //Token refresh will be initiated by the InstanceIdListenerService
+            Log.d(TAG, "token already known, registration is not needed");
+            Log.d(TAG, persistent_settings.getString("token", "token not found") );
+
+        } else {
+            Intent intent = new Intent(this, MyRegistrationIntentService.class);
+            startService(intent);
+        }
+
 
     }
 
     @Override
-    public void onDestroy(){
+    public void onDestroy() {
         super.onDestroy();
         try {
             DDNA.inst().stopSDK();
