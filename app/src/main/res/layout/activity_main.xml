@@ -9,4 +9,41 @@
         android:layout_height="wrap_content"
         android:id="@+id/textView" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/sender_id"
+        android:id="@+id/textViewSenderId"
+        android:layout_gravity="left"
+        android:layout_below="@+id/textView2"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/latest_token"
+        android:id="@+id/textViewLatestToken"
+        android:textIsSelectable="true"
+        android:layout_below="@+id/textToken"
+        android:layout_alignLeft="@+id/textViewSenderId" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/sender_id"
+        android:id="@+id/textView2"
+        android:layout_gravity="left"
+        android:layout_below="@+id/textView"
+        android:layout_alignStart="@+id/textViewSenderId"
+        android:layout_marginTop="20dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/token"
+        android:id="@+id/textToken"
+        android:layout_below="@+id/textViewSenderId"
+        android:layout_alignStart="@+id/textViewSenderId"
+        android:layout_marginTop="20dp" />
+
 </RelativeLayout>

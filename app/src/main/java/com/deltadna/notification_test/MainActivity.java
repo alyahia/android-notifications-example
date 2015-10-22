@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import com.deltadna.android.sdk.DDNA;
 import com.deltadna.android.sdk.helpers.NotStartedException;
@@ -15,6 +16,8 @@ import com.deltadna.android.sdk.helpers.NotStartedException;
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "DDNA MainActivity";
     public static final String PREFS_NAME = "PreferenceFile";
+    public static TextView tokenTextView;
+    public static TextView senderIDTextView;
     private SharedPreferences persistent_settings;
 
     @Override
@@ -22,6 +25,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //set the TokenTextView for later access
+        tokenTextView = (TextView)findViewById(R.id.textViewLatestToken);
+
+        senderIDTextView = (TextView)findViewById(R.id.textViewSenderId);
+        senderIDTextView.setText(getString(R.string.gcm_defaultSenderId));
         persistent_settings = getSharedPreferences(PREFS_NAME, 0);
 
         //Start the registrationIntentService manually upon start in order to get the registrationID
@@ -45,8 +53,10 @@ public class MainActivity extends AppCompatActivity {
             //Since we already have a token we will only need to request a new one once it expires.
             //Token refresh will be initiated by the InstanceIdListenerService
             Log.d(TAG, "token already known, registration is not needed");
-            Log.d(TAG, persistent_settings.getString("token", "token not found") );
-
+            String tokenText = persistent_settings.getString("token", "token not found");
+            Log.d(TAG,  tokenText);
+            //log the token in the gui as well
+            tokenTextView.setText(tokenText);
         } else {
             Intent intent = new Intent(this, MyRegistrationIntentService.class);
             startService(intent);

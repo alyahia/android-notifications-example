@@ -49,5 +49,7 @@ public class MyRegistrationIntentService extends IntentService{
         SharedPreferences.Editor editor = settings.edit();
         editor.putString("token", token);
         editor.commit();
+        MainActivity.tokenTextView.setText(token);
+
     }
 }
