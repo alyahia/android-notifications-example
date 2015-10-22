@@ -25,12 +25,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //set the TokenTextView for later access
-        tokenTextView = (TextView)findViewById(R.id.textViewLatestToken);
-
-        senderIDTextView = (TextView)findViewById(R.id.textViewSenderId);
-        senderIDTextView.setText(getString(R.string.gcm_defaultSenderId));
         persistent_settings = getSharedPreferences(PREFS_NAME, 0);
+
+        //set the TokenTextView for later access
+        tokenTextView = (TextView) findViewById(R.id.textViewLatestToken);
+
+        //set senderID
+        senderIDTextView = (TextView) findViewById(R.id.textViewSenderId);
+        senderIDTextView.setText(getString(R.string.gcm_defaultSenderId));
 
         //Start the registrationIntentService manually upon start in order to get the registrationID
         this.startRegistrationIntent();
@@ -54,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
             //Token refresh will be initiated by the InstanceIdListenerService
             Log.d(TAG, "token already known, registration is not needed");
             String tokenText = persistent_settings.getString("token", "token not found");
-            Log.d(TAG,  tokenText);
+            Log.d(TAG, tokenText);
             //log the token in the gui as well
             tokenTextView.setText(tokenText);
         } else {
