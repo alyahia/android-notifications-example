@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Initialise the deltaDNA SDK
         // NB This can also be done in your applications OnCreate method.
-        DDNA.inst().init(this.getApplication());
+        DDNA.inst().init(this);
 
         // Start deltaDNA SDK
         String environmentKey = "22079697190426055695055037414340";

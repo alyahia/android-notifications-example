@@ -1,1 +1,1 @@
-include ':app', ':dd_android_sdk'
+include ':app', ':ddnasdk-v3.4.1.40'

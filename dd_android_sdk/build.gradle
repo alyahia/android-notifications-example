@@ -1,2 +1,0 @@
-configurations.create("default")
-artifacts.add("default", file('dd_android_sdk.jar'))

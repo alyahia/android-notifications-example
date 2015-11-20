@@ -11,7 +11,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/dd_android_sdk" />
+            <option value="$PROJECT_DIR$/ddnasdk-v3.4.1.40" />
           </set>
         </option>
       </GradleProjectSettings>
