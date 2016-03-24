@@ -39,7 +39,7 @@ public class MyRegistrationIntentService extends IntentService{
 
     /**
      * send the registration token to the backend that is responsible for sending push notifications
-     * @param token
+     * @param token the GCM token
      */
     private void sendRegistrationToken(String token){
         //Register the token with DeltaDNA
